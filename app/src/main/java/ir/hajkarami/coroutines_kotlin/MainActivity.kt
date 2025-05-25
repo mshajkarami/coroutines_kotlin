@@ -9,6 +9,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import ir.hajkarami.coroutines_kotlin.databinding.ActivityMainBinding
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity() {
 
@@ -39,8 +42,9 @@ class MainActivity : AppCompatActivity() {
 
         }
         btnDownload.setOnClickListener {
-
-            download()
+            CoroutineScope(Dispatchers.IO).launch {
+                download()
+            }
         }
 
     }
